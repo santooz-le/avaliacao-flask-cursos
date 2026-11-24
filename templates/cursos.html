@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Cadastro de Cursos{% endblock %}
+
+{% block page_content %}
+{{ wtf.quick_form(form) }}
+
+<h2>Relação de cursos cadastrados</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="col-md-2">Curso</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <th>{{ curso.nome }}</th>
+            <td>{{ curso.descricao }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">Nenhum curso cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
