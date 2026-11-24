@@ -68,7 +68,7 @@ def cursos():
         else:
             db.session.add(Curso(nome=nome, descricao=form.descricao.data.strip()))
             db.session.commit()
-            flash(f'Curso "{nome}" cadastrado com sucesso!')
+            flash('Curso cadastrado com sucesso!')
         return redirect(url_for('cursos'))
     lista = Curso.query.order_by(Curso.id).all()
     return render_template('cursos.html', form=form, cursos=lista)
